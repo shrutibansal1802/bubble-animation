@@ -16,6 +16,12 @@ window.addEventListener('mousemove' ,e=>{
     mouse.y = e.y;
     
 })
+window.addEventListener('resize', ()=>{
+    
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+    initilize();
+})
 function Circle(x,y,radius,dx,dy,hue){
     this.x = x;
     this.y = y;
@@ -56,10 +62,12 @@ function Circle(x,y,radius,dx,dy,hue){
     }
 }
 
-const circleArray =[];
+let circleArray =[];
 
+function initilize(){
 
-    for(let i=0; i<=150;i++){
+    circleArray=[];
+    for(let i=0; i<=800;i++){
         let radius = Math.random() *4 +1;
 
         let x = Math.random() * (innerWidth -radius*2) +radius;
@@ -69,8 +77,10 @@ const circleArray =[];
         let dy =(Math.random() -0.5)*2;
 
         circleArray.push(new Circle(x,y,radius,dx,dy,hue));
-        hue+=10;
+        hue+=5;
     }
+}
+
 
 function animate()
 {
@@ -85,3 +95,4 @@ function animate()
 }
 animate();
 
+initilize()
