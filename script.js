@@ -4,8 +4,8 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 ctx.strokeStyle = "#ff0000"
 
-let hue =0;
-
+let hue =220;
+const circles = 500;
 let mouse= {
     x:undefined,
     y: undefined
@@ -51,7 +51,7 @@ function Circle(x,y,radius,dx,dy,hue){
 
     if(mouse.x - this.x < 50 && mouse.x -this.x >-50 && 
         mouse.y - this.y < 50 && mouse.y -this.y >-50 && this.radius <50)
-      { this.radius+=1;}
+      { this.radius+=1.5;}
     else if(this.radius>this.minRadius)
     {
         this.radius--;
@@ -67,8 +67,8 @@ let circleArray =[];
 function initilize(){
 
     circleArray=[];
-    for(let i=0; i<=800;i++){
-        let radius = Math.random() *4 +1;
+    for(let i=0; i<=circles;i++){
+        let radius = Math.random() *5 +2;
 
         let x = Math.random() * (innerWidth -radius*2) +radius;
         let y = Math.random() * (innerHeight -radius*2) +radius;
@@ -77,7 +77,7 @@ function initilize(){
         let dy =(Math.random() -0.5)*2;
 
         circleArray.push(new Circle(x,y,radius,dx,dy,hue));
-        hue+=5;
+        hue+=0.2;
     }
 }
 
